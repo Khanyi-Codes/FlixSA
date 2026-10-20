@@ -6,9 +6,18 @@ import '../App.css'
 
 // Use effect and useState hooks to manage the state of the card component
 
-const Search= () => {
+const Search= (searchTerm, setSearchTerm) => {
+    // Do no mutate props
 return(
-    <div className="text-white text-3xl">Search</div>
+    <div className="search">{searchTerm}
+    <div>
+    <img src = "./white-search-icon.png" alt= "search"/>
+    <input
+    type = "text"
+    placeholder='Search through thousands of movies'
+    value={searchTerm}
+    onChange={(event)=>setSearchTerm(event.target.value)}/>
+    </div></div>
 )
  
 }
