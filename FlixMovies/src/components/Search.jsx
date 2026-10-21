@@ -6,7 +6,7 @@ import '../App.css'
 
 // Use effect and useState hooks to manage the state of the card component
 
-const Search= (searchTerm, setSearchTerm) => {
+const Search= ({searchTerm, setSearchTerm}) => {
     // Do no mutate props
 return(
     <div className="search">{searchTerm}

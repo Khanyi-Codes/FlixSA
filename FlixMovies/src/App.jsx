@@ -14,14 +14,14 @@ const [searchTerm, setSearchTerm]= useState('');
 
   return ( 
     <main>
-      <div className="pattern">
-        <div className = "wrappper"/>
+      <div className="pattern"/>
+        <div className = "wrappper">
           <header> 
             <img src={"./hero.png"} alt="hero" className="hero" />
             <h1>Find all of your favourite <span className ="text-gradient">Movies</span> tailored for you!
             </h1>
           </header>
-          <Search searchTerm =  {searchTerm} setSearchTerm = {setSearchTerm}/> 
+          <Search searchTerm ={searchTerm} setSearchTerm = {setSearchTerm}/>
 
         </div>
       {/* </div> */}
