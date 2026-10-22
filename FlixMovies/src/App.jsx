@@ -21,12 +21,16 @@ const App = () => {
 const [searchTerm, setSearchTerm]= useState('');
 
 const [errorMessage, setErrorMessage] = useState('');
+
 const fetchMovies = async () => {
   try {
     const endpoint = `${API_BASE_URL}/discover/movie?sort_by=populatrity.desc`;
     const response = await fetch(endpoint, API_OPTIONS);
     
-    // const data = await response.json();
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json(); 
   } catch (error) {
     console.error(`Error fetching movies: ${error}`);
     setErrorMessage('Error fetching movies');
@@ -34,6 +38,7 @@ const fetchMovies = async () => {
 };
 
 useEffect(()=>{
+  fetchMovies();
 },[]);
 
   return ( 
