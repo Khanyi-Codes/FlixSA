@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 // import viteLogo from './assets/vite.svg'
 import Search from './components/Search.jsx'
 import Spinner from './components/Spinner.jsx'
+import MovieCard from './components/MovieCard.jsx'
+
 import './App.css'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -23,7 +25,7 @@ const [searchTerm, setSearchTerm]= useState('');
 
 const [errorMessage, setErrorMessage] = useState('');
 const[movieList, setMovieList] = useState([]);
-const[isLoading, setIsLoading] = useState(true);
+const[isLoading, setIsLoading] = useState(false);
 
 const fetchMovies = async () => {
   setIsLoading(true);
@@ -51,7 +53,7 @@ const fetchMovies = async () => {
     console.error(`Error fetching movies: ${error}`);
     setErrorMessage('Error fetching movies');
   }finally {
-    setIsLoading(true);
+    setIsLoading(false);
   }
 };
 
@@ -70,7 +72,7 @@ useEffect(()=>{
           <Search searchTerm ={searchTerm} setSearchTerm = {setSearchTerm}/>
           </header>
           <section className = "all-movies">  
-            <h2>All Movies</h2>
+            <h2 className="mt-[25px]">All Movies</h2>
             
             {isLoading ? (
               // <p className = "text-white">Loading movies...</p>
@@ -80,8 +82,11 @@ useEffect(()=>{
             ) : (
               <ul>
                 {movieList.map((movie) => (
-                  <p key= {movie.id} className="text-white">{movie.title}</p>))}
-                </ul>)}
+          
+                  <MovieCard key={movie.id} movie={movie} />
+                  ))}
+                </ul>
+              )}
           </section>
           
 

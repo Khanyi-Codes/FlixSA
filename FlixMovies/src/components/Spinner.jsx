@@ -1,7 +1,11 @@
 import { Spinner } from "flowbite-react";
 
 export function SpinnerComponent() {
-  return (<Spinner aria-label="Default status example" />);
+  return (
+  <Spinner color="purple" aria-label="Purple spinner" />
+
+
+  );
 }
 export default SpinnerComponent;
 
