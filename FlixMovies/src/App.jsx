@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useDebounce } from 'use-debounce';
 // import heroImg from './assets/hero.png'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
@@ -7,6 +8,7 @@ import Spinner from './components/Spinner.jsx'
 import MovieCard from './components/MovieCard.jsx'
 
 import './App.css'
+import { useTableContext } from 'flowbite-react';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
@@ -26,6 +28,9 @@ const [searchTerm, setSearchTerm]= useState('');
 const [errorMessage, setErrorMessage] = useState('');
 const[movieList, setMovieList] = useState([]);
 const[isLoading, setIsLoading] = useState(false);
+const[debouncedSearchTerm, useDebouncedSearchTerm] = useState('')
+
+useDebounce(( )=> setDebouncedSearchTerm(searchTerm), 500,[searchTerm])
 
 const fetchMovies = async (query = '') => {
   setIsLoading(true);

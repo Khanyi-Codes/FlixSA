@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const MovieCard = ({movie:{title, vote_average, poster_path, release_date, original_lamguage
+const MovieCard = ({movie:{title, vote_average, poster_path, release_date, original_language
 }}) => {
     return (
 
@@ -19,7 +19,7 @@ const MovieCard = ({movie:{title, vote_average, poster_path, release_date, origi
 
                 </div>
                 <span>.</span>
-                <p className = "lang">{original_lamguage}</p>
+                <p className = "lang">{original_language}</p>
                 <span>.</span>
                 <p className="year">
                     {release_date ? release_date.split('-')[0] : 'N/A'}</p>
